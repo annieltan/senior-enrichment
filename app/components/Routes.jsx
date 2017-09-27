@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { fetchCampuses, fetchStudents } from '../reducers';
 import Campus from './Campus';
 import Student from './Student';
-import Main from './Main';
 import Home from './Home';
+import store from '../store';
 
 export default class Routes extends Component {
+  componentDidMount(){
+    const campusesThunk = fetchCampuses();
+    const studentsThunk = fetchStudents();
+    store.dispatch(campusesThunk);
+    store.dispatch(studentsThunk);
+  }
+
   render() {
     return (
       <Router>
@@ -26,9 +34,8 @@ export default class Routes extends Component {
         <div id="heading" className="container well">
           <h1>Columbia University</h1>
         </div>
-
           <Switch>
-            <Route exact path="/" component = { Main } />
+            <Route exact path="/" component = { Home } />
             <Route path="/campuses/:campusId" component = { Campus } />
             <Route exact path="/students" component = { Student } />
           </Switch>

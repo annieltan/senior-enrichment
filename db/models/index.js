@@ -22,8 +22,8 @@ var seed = function(){
     Student.create({ name: "Adam", email: "adam@columbia.edu"}),
     Student.create({ name: "Jill", email: "jill@columbia.edu" }),
     Student.create({ name: "Sean", email: "sean@columbia.edu" }),
-    Campus.create({ name: "Columbia SEAS", image: cc_image }),
-    Campus.create({ name: "Columbia College", image: seas_image })
+    Campus.create({ name: "Columbia SEAS", image: seas_image }),
+    Campus.create({ name: "Columbia College", image: cc_image })
   ])
   .then(([_sophia, _adam, _jill, _sean, _seas, _college])=>{
     _sophia.campusId = _seas.id;

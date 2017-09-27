@@ -9,8 +9,7 @@ const Campus = db.define('campus', {
     }
   },
   image: {
-    type: db.Sequelize.STRING,
-    defaultValue: "http://columbiasc.edu/app/uploads/CC_Logos/CC_Web_logo_stacked.jpg"
+    type: db.Sequelize.STRING
   }
 })
 

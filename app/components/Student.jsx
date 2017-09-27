@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCampuses, fetchStudents, addStudent } from '../reducers';
-import { Link } from 'react-router-dom';
 import StudentForm from './StudentForm';
+import DeleteStudent from './DeleteStudent';
 
 const mapStateToProps = function({ students, campuses }) {
   return {
@@ -31,13 +30,13 @@ const Student = function({ students, campuses }){
               {
                 students.map(student=>{
                   return (
-                    <tr key={student.id}>
-                    <td>{student.id}</td>
-                    <td>{student.name}</td>
-                    <td>{student.email}</td>
-                    <td>{student.campus.name}</td>
-                    <td><Link to={`/students/{student.id}`}>x</Link></td>
-                    </tr>
+                      <tr key={student.id}>
+                      <td value={student.id}>{student.id}</td>
+                      <td>{student.name}</td>
+                      <td>{student.email}</td>
+                      <td>{student.campus.name}</td>
+                      <td><DeleteStudent studentId={ student.id }/></td>
+                      </tr>
                   )
                 })
               }

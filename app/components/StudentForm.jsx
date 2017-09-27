@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import { fetchStudents } from '../reducers';
 import axios from 'axios';
 import store from '../store';
@@ -70,7 +69,8 @@ export default class StudentForm extends Component {
                 }
               </select>
             </div>
-            <button type="submit">Add Student</button>
+            <button className="btn btn-outline-secondary btn-sm"
+              type="submit">Add Student</button>
           </form>
         </div>
       </div>

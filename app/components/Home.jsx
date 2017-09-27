@@ -14,12 +14,17 @@ const mapStateToProps = function({ campuses, students }) {
 const Home = function({ campuses }){
   return (
       <div id="campuses" className="container well">
-        <ul>
+        <ul className="list-unstyled">
           {campuses.map(campus => {
           return (
-            <li key={campus.id}>
-            <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
-            </li>
+            <div key={campus.name} className="col-xs-6">
+              <li key={campus.id}>
+              <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+              </li>
+              <img src={campus.image}
+                className="rounded float-left"
+                width="200" height="200" />
+            </div>
             )
           })}
         </ul>

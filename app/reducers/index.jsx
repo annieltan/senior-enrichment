@@ -43,7 +43,6 @@ export function fetchStudents(){
     return axios.get('/api/students')
       .then(res => res.data)
       .then(students => {
-        console.log('students', students)
         const action = getStudents(students)
         dispatch(action)
       })
