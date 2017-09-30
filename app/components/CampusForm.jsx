@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { fetchStudents } from '../reducers';
+import { fetchCampuses } from '../reducers';
 import axios from 'axios';
 import store from '../store';
-
 
 export default class StudentForm extends Component {
   constructor(props){
     super(props);
     this.state = {
       name: '',
-      email: '',
-      campusId: this.props.campuses[0].id
+      image: ''
     }
 
     this.onChange = this.onChange.bind(this);
@@ -22,21 +20,23 @@ export default class StudentForm extends Component {
   onSubmit(evt){
     evt.preventDefault();
 
-    axios.post('/api/students/', this.state)
+    axios.post('/api/campuses/', this.state)
     .then(res => res.data)
-    .then(() => store.dispatch(fetchStudents()))
+    .then(() =>{
+      store.dispatch(fetchCampuses())
+    })
     .catch(err => console.log(err));
 
   }
   render(){
     return (
-      <div id="all-students" className="container"
-        className="container well col-xs-3">
+      <div id="all-campuses" className="container"
+        className="container col-xs-3">
         <div>
-          <h2>Add Student</h2>
+          <h2>Add Campus</h2>
           <form onSubmit={ this.onSubmit }>
             <div className="form-group">
-              <label>Full Name</label>
+              <label>Campus Name</label>
               <input
                 name="name"
                 type="name"
@@ -47,28 +47,17 @@ export default class StudentForm extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Email</label>
+              <label>Image URL</label>
               <input
-                name="email"
-                type="email"
+                name="image"
+                type="link"
                 className="form-control"
-                placeholder="Add Email"
+                placeholder="Add Image"
                 onChange={ this.onChange }
-                required
               />
             </div>
-            <div className="form-group">
-              <label>Campus</label>
-              <select value={this.state.campusId} name="campusId" onChange={this.onChange}>
-                {
-                  this.props.campuses.map(campus=>{
-                    return <option key={campus.id} value={campus.id}>{campus.name}</option>
-                  })
-                }
-              </select>
-            </div>
             <button className="btn btn-outline-secondary btn-sm"
-              type="submit">Add Student</button>
+              type="submit">Add Campus</button>
           </form>
         </div>
       </div>

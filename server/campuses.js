@@ -27,7 +27,7 @@ router.post('/', (req, res, next) => {
 router.delete('/:campusId', (req, res, next) => {
   const campusId = req.params.campusId*1;
 
-  Campus.destroy(campusId)
+  Campus.destroy({where: {id: campusId}})
     .then(() => res.status(204).end())
     .catch(next)
 })

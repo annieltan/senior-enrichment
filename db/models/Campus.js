@@ -9,7 +9,8 @@ const Campus = db.define('campus', {
     }
   },
   image: {
-    type: db.Sequelize.STRING
+    type: db.Sequelize.STRING,
+    defaultValue: "http://www.youtodesign.com/uploads/allimg/1606/4918.jpg"
   }
 })
 

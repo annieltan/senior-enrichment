@@ -9,15 +9,12 @@ const DeleteStudent = function({ studentId }){
       <button className="btn btn-outline-secondary btn-sm"
         type="submit" onClick={ (e)=>{
           e.preventDefault();
-          console.log('e', e)
 
           axios.delete(`/api/students/${ studentId }`)
           .then(res=>res.data)
-          .then(results => console.log(results));
-
-          store.dispatch(fetchStudents());
-          
-        } }>Delete</button>
+          .then(() => store.dispatch(fetchStudents()))
+          .catch(err=>console.log(err))
+        }}>Delete</button>
     </div>
   )
 };

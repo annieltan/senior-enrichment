@@ -14,7 +14,8 @@ const Campus = require('./Campus');
 const cc_image = "http://columbiasc.edu/app/uploads/CC_Logos/CC_Web_logo_stacked.jpg"
 const seas_image = "http://engineering.columbia.edu/files/engineering/logo-hammers600.jpg"
 
-Student.belongsTo(Campus)
+Student.belongsTo(Campus, { onDelete: 'cascade', hooks: true });
+//Campus.hasMany(Student, { onDelete: 'cascade', hooks: true })
 
 var seed = function(){
   return Promise.all([
